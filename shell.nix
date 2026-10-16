@@ -12,8 +12,7 @@ let
       mkdir -p "$out/bin"
       makeWrapper ${python}/bin/python "$out/bin/wkeybutton" \
         --add-flags "-m wkeybutton" \
-        --prefix PYTHONPATH : ${pkgs.lib.escapeShellArg (toString ./.)} \
-        --set QT_QPA_PLATFORM wayland
+        --prefix PYTHONPATH : ${pkgs.lib.escapeShellArg (toString ./.)}
     '';
   };
 in
