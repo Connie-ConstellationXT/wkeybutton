@@ -9,6 +9,22 @@ Requirements:
 - Modifier latches: tap Shift/Ctrl/Alt/Meta, then the next key. Tap again to cancel. Multiple modifiers can be combined.
 - Remains usable with a physical keyboard connected; no tablet-mode or text-field activation requirement.
 
+## Run with Nix
+
+```sh
+nix-shell
+wkeybutton
+```
+
+The shell includes Python, PySide6, evdev, Qt Wayland plugins and the launcher; no pip or virtual environment is needed. Use `wkeybutton --dry-run` to preview without device access.
+
+If `/dev/uinput` is not accessible, run this once per boot/device recreation:
+
+```sh
+sudo modprobe uinput
+sudo setfacl -m "u:$(id -un):rw" /dev/uinput
+```
+
 ## First prototype
 
 Python + PySide6 provide the ordinary desktop window. Linux `uinput` delivers physical key events through the compositor. This is a Wayland desktop application, but input injection uses a kernel virtual device rather than a compositor-specific input-method protocol. It does not grab or read physical keyboards.
