@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wkeybutton"
+version = "0.1.0"
+description = "An always-available desktop keyboard for KWin Wayland"
+requires-python = ">=3.11"
+dependencies = ["PySide6>=6.6,<7", "evdev>=1.7,<2"]
+
+[project.scripts]
+wkeybutton = "wkeybutton.app:main"
+
+[tool.setuptools.packages.find]
+include = ["wkeybutton*"]
